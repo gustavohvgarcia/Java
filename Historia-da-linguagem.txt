@@ -1,0 +1,64 @@
+INTRODUÇÃO À LINGUAGEM JAVA
+
+-> HISTÓRIA
+	Java é uma linguagem de programação orientada
+a objetos desenvolvida na década de 90, na empresa
+Sun Myrcrosystems e posteriormente adquirida pela Oracle
+em 2008.
+	Desde o seu lançamento, em maio de 1995, a plataforma
+Java foi adotada mais rapidamente do que qualquer outra 
+linguagem de programação na história da computação.
+	
+-> CARACTERÍSTICAS DA LINGUAGEM JAVA
+	-É uma linguagem interpretada:  
+	O código salvo na IDE tem o formato .java, o compilador
+transforma esse arquivo para a extensão .class. Feito isso, 
+A JVM (Java Virtual Machine) pega o arquivo .class e o interpreta 
+para a linguagem de máquina, e assim, o sistema operacional consegue
+ler e interpretar as instruções do programa.
+	Diferente das linguagens de programação compiladas (onde a 
+compilação do código dá-se em tempo de desenvolvimento),
+a linguagem Java é compilada para um bytecode (.class) que é interpretado
+por uma máquina virtual (JVM).
+
+-> A DIFERENÇA ENTRE A PLATAFORMA JAVA E A LINGUAGEM JAVA
+	A linguagem de programação Java é a linguagem convencional da plataforma
+Java, mas não é a sua única linguagem.
+	Uma grande vantagem da plataforma é a de não estar presa a um único
+sistema operacional ou hardware, pois seus programas rodam através de uma máquina
+virtual que pode ser emulada (Escreva uma vez e execute em qualquer lugar).
+	O jre possui todos os componentes necessários para rodar os programas da plataforma java,
+juntamente com a JVM.
+	-Edições da plataforma Java:
+		-Java SE (Java Platform, Standard Edition): é a base da plataforma, 
+	traz algumas classes comuns às plataformas;
+		-Java EE (Java Platform, Enterprise Edition): parte de desenvolvimento web.
+		-Java ME (Java Platform, Micro Edition): dispositivos móveis e embarcados;
+	
+-> FASES DA EXECUÇÃO JAVA (DE NOVO PORQUE SIM):
+	1) Escrevemos o código-fonte (arquivo com a extensão .java);
+	2) Utilizamos o JDK para compilar o seu código-fonte e gerar o
+arquivo bytecode (arquivo com a extensão .class);
+	3) Para executar o seu programa, a JVM lê o arquivo compilado (.class)
+e as bibliotecas padrões do Java que estão no JRE.
+	
+	-JDK (Java Development Kit): é necessário para desenvolver uma aplicação Java.
+		é responsável por compilar o código-fonte (.java) em bytecode(.class).
+	-JRE (Java Runtime Enviroment): possui as classes padrões para rodar uma aplicação Java.
+		é o Ambiente de Execução do Java que fornece as bibliotecas padrões do Java para o 
+		JDK compilar o seu código e para a JVM executar o seu programa.
+	-JVM (Java Virtual Machine): executa o bytecode (.class).
+
+-> VERSÕES DO JAVA:
+	-Principal diferença entre OpenJDK e JDK Oracle:
+		O OpenJDK é um Java totalmente Open Source com uma GNU General Public License;
+		já o JDK Oracle requer uma licença comercial sob o Contrato de Licença de Código Binário Oracle.
+	A cada versão lançada, são adicionadas ou excluídas ferramentas da linguagem.
+
+-> O que é IDE (Ambiente de Desenvolvimento Integrado)
+	É um software que combina ferramentas comuns de desenvolvimento em uma única interface
+gráfica do usuário (GUI), facilitando o desenvolvimento de aplicações.
+	O Java possui um conjunto de ferramentas para desenvolver programas baseados nele, que são 
+conhecidos como Java Development Kit ou JDK, sendo este o ambiente voltado para os desenvolvedores.
+	O JDK faz parte do funcionamento das IDE's - programas de desenvolvimento como
+InteliJ, Eclipse, NetBeans, etc.
