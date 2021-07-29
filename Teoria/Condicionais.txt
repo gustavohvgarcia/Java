@@ -1,0 +1,24 @@
+CONVENCOES DE NOMES
+
+Nome de classes: inicial maiuscula, restante minuscula.
+	nomes compostos = CamelCase;
+
+Nome de metodo: tudo minusculo;
+	camelCase;
+
+Nome de variavel: coisas sucintas; evitar numero nos nomes;
+comeca com minuscula;
+
+Uso do var é opcional.
+
+Checkstyle Gradle Plugin: verifica a qualidade do código
+(espacos a mais, nomes, etc);
+
+The PMD Plugin(alem de ver acima, funciona como debbug);
+
+A inclusao e as configuracoes desses plugins sao feitos atraves do 
+arquivo build.gradle do projeto;
+
+DEBUG DE CODIGO
+	breakpoints: a execucao para e espera o programador dar o
+proximo passo ou o passo anterior, analisando linha a linha do código;

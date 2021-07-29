@@ -1,0 +1,77 @@
+INTRODUÇÃO MAVEN
+
+	O Maven é uma ferramenta desenvolvida pela Apache, ela serve para gerenciar as dependências e automatizar seus builds.
+
+Já o pom.xml é o arquivo de configuração do Maven.
+
+Gerenciando as dependências
+
+É muito comum encontrar projetos que fazem o uso de outras bibliotecas ou frameworks,
+para usá-los é necessário acessá-los através da dependências. As dependências em Java 
+são arquivos comprimidos e armazenados com a extensão .jar. Algumass dessas dependências
+possuem uma ou mais subdependências e algumas delas possuem uma ou mais subsubdependências,
+e por aí vai. Ao invés de quando você precisar de uma dependência você ir em busca dela no Google,
+baixá-la, adicionar no seu projeto e descobrir que ela precisa de X novas subdependências e ficar
+num ciclo gigante à caça de dependências, você pode automatizar esse processo chato e cansativo, e 
+focar no desenvolvimento que é o que realmente dá valor ao seu projeto.
+
+O Maven automatiza isso para você!
+
+Existe um repositório que é o considerado central do Maven que pode ser acessado através desse link:
+https://search.maven.org . Além dele existem muitos outros repositório espalhados por aí, e uma boa 
+forma de encontrá-los é através do site http://mvnrepository.com/ que indexa outros repositórios e 
+disponibiliza uma forma mais amigável de buscar as dependências que você necessita.
+
+Ao pesquisar por uma dependência para ser acessada através do Maven você obterá um trecho XML que serve
+para configurar o pom.xml do seu projeto e indicar que você estará fazendo uso dessa dependência em seu projeto.
+Ao adicionar esse trecho, o Maven faz o download dela e armazena em um repositório local no seu computador, se você 
+possuir mais de um projeto fazendo uso da mesma dependência você só terá um único arquivo no seu computador, no seu 
+repositório local organizado pelo Maven.
+
+Outra grande vantagem da dependência estar em um repositório local, e não na pasta do seu projeto, é que ao usar
+ ferramentas de versionamento como por exemplo o GIT você não precisará adicionar os seus .jars nele, já que a 
+responsabilidade de gerenciar as dependências não é mais sua, mas sim do Maven.
+
+------------------------------------------------------------------------------------------------------------------------------
+O QUE É GRADLE?
+
+	Para entender o que são sistemas de build imagine que você está 
+desenvolvendo um aplicativo para Android e precisa empacotar tudo e distribuir 
+para seus usuários,  nesse momento é que entram em ação os sistemas de build, 
+eles são responsáveis por "pegar" automaticamente todos os recursos (sejam eles 
+arquivos java ou xml por exemplo) e utilizar ferramentas especificas (exemplo:
+compilador de classes java) em um grupo de arquivos empacotando em um único arquivo,
+no caso do Android um arquivo .apk.
+	
+	Mas então, o que é o Gradle ?
+		
+O Gradle é um sistema avançado de automatização de builds que une o melhor da flexibilidade
+do Ant com o gerenciamento de dependencias e as convenções do Maven. Os arquivos de build do 
+Gradle são scripts escritos na linguagem Groovy, ao contrário dos formatos de construção do Ant
+e Maven que usam arquivos XML para a configuração. Por serem baseados em scripts, os arquivos do
+Gradle permitem que você realize tarefas de programação em seu arquivo de configuração. O Gradle
+ainda conta com um sistema de plugins que adicionam funcionalidades extras ao seu core.
+
+	Conceitos básicos do Gradle
+
+Tudo no Gradle se resumo a dois conceitos básicos:
+
+Projects: Toda build do gradle é feita de um ou mais projects, a representação de project dependerá de
+como você irá utilizar o Gradle. Por exemplo, podemos ter um project que representa um JAR ou até mesmo
+uma aplicação web. Um project não necessariamente representa coisas que serão construídas, ele também pode 
+representar coisas que serão feitas, como o deploy de sua aplicação para ambientes de homologação ou produção.
+
+Tasks: Cada project é feito de uma ou mais tasks, uma task representa um pedaço de trabalho que uma build vai
+executar. Podemos ter por exemplo tasks que fazem a compilação de classes, criação de JARs e até mesmo a publicação
+de arquivos para um repositório especifico.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+O QUE É SPRING BOOT?
+	O Spring Boot é uma ferramenta que visa facilitar o processo de configuração e publicação de aplicações que utilizem o ecossistema Spring.
+
+O Spring Boot fornece a maioria dos componentes baseados no Spring necessários em aplicações em geral de maneira pré-configurada, tornando possível termos uma aplicação rodando em produção rapidamente com o esforço mínimo de configuração e implantação.
+
+O Spring Boot permite ainda selecionarmos os módulos que desejamos utilizar.
+
+Com configurações rápidas, você consegue, por exemplo, disponibilizar uma aplicação baseada no Spring MVC, utilizando o Hibernate + JPA e o Thymeleaf como template engine.

@@ -1,0 +1,36 @@
+O que é um array?
+	-Array (ou matriz), é uma estrutura de dados que nos 
+permite organizar valores na memória.
+	-Fazem parte da biblioteca java.util que é nativa do java;
+	-Armazenam elementos do mesmo tipo;
+	-Podem ser unidimensionais ou multidimensionais.
+
+	-Cada item do array é chamado de elemento;
+	-Cada elemento é acessado pela posição da memoria(indice);
+	-O indice inicia a partir de 0;
+	-Ao se declarar um array, todos indices sao inicializados em 0.
+
+	-Arrays não podem mudar de tamanho, a partir do momento que um array
+foi criado, ele não pode mudar de tamanho;
+	-Caso seja necessario mais espaço, será necessario criar um novo array,
+copiando todos os elementos do array antigo.
+
+	Declaração de arrays em java:
+
+	-Utilizando o operdor 'new':
+		dataType[] arrayName = new dataType[tamanho];
+		ex: int vetor = new int[7];
+	
+	-Outra forma: elementos ja definidos;
+	int[] meuArray = {1,2,3,4,5,6};
+
+	Para percorrer um array, devemos usar um laço de repetição(for, while, foreach).
+Utiliza-se uma variavel de controle (contador), que vai de 0 até o numero de posicoes do array.
+
+	->Arrays multidimensionais
+	Um array multidimensional é um array contendo um ou mais arrays internos.
+	Ex:
+		int[][] matriz = {{1,2,3,4},{5,6,7,8}};
+	No exemplo, matriz é um array com dois arrays como seus elementos.
+	Para percorrer um array multidimensional é necessario o uso de duas iteracoes,
+percorrendo as linhas e as colunas.

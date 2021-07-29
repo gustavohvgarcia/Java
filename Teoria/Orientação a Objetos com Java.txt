@@ -1,0 +1,90 @@
+-O Paradigma de Orientação a Objetos
+	A diferença entre um Código Procedural e um Orientado
+a Objetos é bem simples. Em cdigos procedurais, escolher o melhor
+algoritmo é o mais importante. Já em linguagens orientadas a objeto,
+pensar no projeto de classes, como se encaixam, e como serão estendidas
+é o que mais importa. 
+	
+-> O conceito de CLASSE
+	Vamos entender uma classe como um modelo a ser seguido;
+	Uma classe vai funcionar como uma espécie de molde que
+nos servirá como base para construir algo.
+
+-> O conceito de OBJETO
+	Agora que entendemos que temos um modelo que podemos seguir,
+o que podemos fazer com esse modelo?
+	Quando utilizamos uma classe para criar um objeto, 
+estamos INSTANCIANDO UM OBJETO DAQUELA CLASSE. O que acontece
+é que podemos criar VÁRIOS OBJETOS de uma mesma classe, ou seja, 
+várias instâncias de objetos.
+	
+-> O conceito de ATRIBUTOS
+	Os atributos são os elementos que definem a estrutura da classe.
+Também são conhecidos como variáveis de classe, e podem ser divididos em dois
+tipos básicos: atributos de instância e de classe.
+
+-> O conceito de Métodos
+	São funções que realizam tarefas. Eles podem ou não retornar valores, e podem 
+ou não receber parâmetros.
+
+-->CONSTRUTORES
+	Podemos entender o termo construtor no sentido literal, afinal vamos
+CONSTRUIR um objeto.
+	Por meio de um construtor, criamos um objeto baseado em uma Classe e 
+assim o ALOCAMOS EM MEMORIA.
+	Ao criar um objeto, dizemos que estamos instanciando um objeto;
+	
+	O construtor recebe o mesmo nome da classe, antecedido de um modificador
+de acesso.
+	Classe nome(){};
+	Também pode-se criar construtores parametrizados, conseguindo assim
+definir um contrato onde sempre será obrigatório alguma informação na hora de 
+instanciar a classe. A ocorrência de dois construtores em uma classe (com e sem parametros),
+garante que possamos instanciar o objeto das duas maneiras.
+	Caso seja definido um construtor com parametros dentro de uma classe, não será
+possivel instanciar um objeta dela sem os respectivos parâmetros. Erro em tempo de compilação.
+
+	NÃO EXISTE DESTRUTOR EM JAVA. Desalocar o objeto fica por conta do GARBAGE COLLECTOR.
+
+->ENCAPSULAMENTO:
+	Quando falamos de encapsulamento, estamos falando efetivamente em PROTEGER ALGUMA INFORMAÇÃO
+de alguma forma, ou seja, com uma CÁPSULA. Queremos garantir a nossa implementação e que o acesso a
+determinados dados estão totalmente protegidos do acesso externo.
+	Basicamente, definir formas específicas de como trabalhar com os dados de uma classe.
+
+->HERANÇA:
+	É a capacidade de uma classe herdar atributos e comportamentos de outra.
+	Por exemplo, dada uma classe Veículo, que possui atributos 'modelo' e 'marca', pode ser
+extendidas pelas classes Carro e Motocicleta, que possuem as duas mesmas caracteristicas de Veículo, 
+e as suas próprias particularidades.
+	A palavra reservada para herança é 'extends';
+	
+	->HERANÇA X COMPOSIÇÃO.
+	
+->POLIMORFISMO: quando falamos de polimorfismo, estamos querendo entrar em um cenário onde
+um objeto pode ser referenciado de varias maneiras.
+Basicamente, as classes tem o mesmo método, mas com comportamentos diferentes, específicos a cada 
+classe.
+
+->CARACTERÍSTICAS ESPECÍFICAS DA ORIENTAÇÃO EM OBJETOS NO JAVA
+(THIS, SUPER, EQUALS, HASHCODE);
+	
+	-A palavra reservada 'this': quando estamos trabalhando com o termo 'this', no Java, 
+estamos fazendo uma AUTO REFERÊNCIA.
+	-A palavra reservada 'super': aqui também estamos fazendo uma referência, mas dessa vez
+estamos fazendo REFERÊNCIA À SUPERCLASSE em um cenário de herança.
+*OBSERVACAO: em Java, todas as classes herdam de Object, e, se usarmos o super em uma classe que não tem 
+um extends explicito, estamos fazendo referencia ao Object.
+	CLASSE ABSTRATA: nao pode ser instanciada com 'new';
+	-A palavra reservada 'equals': como sabemos, todas as classes em Java herdam de Object. E, portanto, 
+tem por padrão alguns métodos.
+	Um deles é o método 'equals' que serve para fazer comparações entre objetos; entretanto, esse método
+possui algumas peculiaridades. O método equals compara ENDERECOS DE MEMORIA, e por padrao, ve se os dois objetos
+estao na mesma posicao de memoria. Para contornar isso, devemos SOBRESCREVER o método equals, comparando da forma 
+que acharmos adequado.
+
+	-O HASHCODE: quando falamos em HashCode, precisamos pensar em um código gerado que garanta um carácter 
+(identificação) único ao nosso objeto. Essa pode ser uma forma muito interessante para que possamos comparar realmente
+se um objeto é igual ao outro.
+	Temos que garantir que a implementação da lógica de hashCode sempre respeite as mesmas regras, pois quando compararmos
+os nossos objetos, o nosso fator de comparação será ele.

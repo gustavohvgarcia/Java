@@ -1,0 +1,37 @@
+Tratamento de exceções:
+	Exceptions: exceções são todos os erros que ocorrem
+durante o processamento de um método que podem ser esperados
+ou não esperados. Como o termo já diz, "Exceptions" são exceções.
+Falhas que não devem ocorrer rotineiramente no fluxo de um sistema.
+	Toda excecao herda da classe Exception, que por sua vez herda
+da classe Throwable. A classe Error também herda de Throwable.
+	É importante o erro sempre ser tratado.
+	
+	->Checked Exceptions: são exceções esperadas, cujo fluxo
+ou método de um sistema foi preparado para receber. Um bom
+exemplo é uma exceção de negócio, onde se deseja informar um erro 
+caso a esceção esperada ocorra.
+	
+	->Uncheked Exceptions: são exceções não esperadas para 
+um fluxo ou método de um sistema, um bom exemplo é a famosa NullPointWxception,
+que ocorre quando se tenta acessar uma referência de memória vazia, ou recuperar
+uma instância que não existe, dentre outros motivos. 
+	
+	-> O bloco try-catch
+	O bloco try-catch sempre é utilizando quando no processo que será
+executado dentro de um método é esperado um erro, então cria-se um bloco 
+"protegido" onde qualquer erro que ocorra dentro do trecho try é direcionado
+para o trecho catch e sofrera o devido tratamento de erro.
+
+	-> O bloco finally
+	O finally é um bloco de código que pode ou não ser utilizado 
+junto ao try-catch, este trecho de código sempre será executado independente
+se ocorrer erro ou não dentro do fluxo do try catch. Normalmente o finally é usado 
+para liberar recursos ou para dar continuidade em um fluxo que deve ocorrer independente
+de erro.
+
+	->Throws: é a assinatura do método que será retornado caso 
+ocorra erro para o método que fez a chamada, dentro de um fluxo encadeado.
+
+	->Throw: é usado para lançar a exceção desejada, juntamente com a mensagem 
+de erro, para o método que fez a chamada.

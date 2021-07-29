@@ -1,0 +1,27 @@
+STRING: é uma sequencia de caracteres.
+-Está presente no pacote java.lang;
+-Pode-se instanciar uma string com o new.
+-ALGUMAS OPERACOES COM STRINGS:
+	-juncao de strings (concatenacao +);
+	-nome.charAt(i): devolve o caractere da string na posicao dada;
+	-nome.length(): devolve o tamanho da string;
+	-nome.trim(): tira os caracteres em branco da string;
+	-nome.toLowerCase(): deixa tudo em minusculo;
+	-nome.toUpperCase(): deixa tudo em maiusculo;
+	-nome.contains(char): existe o char dentro da string?
+	-nome.replace(char antigo, char novo): substitui as ocorrencias
+do caractere antigo pelo caractere novo;
+	-nome.equals(outra string): compara a string "nome" com a outra string
+passada como parâmetro;
+	-nome.equalsIgnoreCase(outra string): compara a string "nome" com a outra string
+passada como parâmetro (independente das minusculas e maiusculas);
+	-nome.substring(inicio, fim): retorna a substring entre os indices passados
+como parâmetro.
+	-PREFERIVEL IMPRIMIR A STRING COM O string.format;
+	(igual ao C);
+
+-OBJETO STRING BUILDER
+	final var builder = new StringBuilder(parametro);
+	A classe StringBuilder é uma classe de strings com mais 
+métodos relacionados a strings, como reversao e adicionar ao fim da 
+string;

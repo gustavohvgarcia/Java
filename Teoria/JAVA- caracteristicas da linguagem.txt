@@ -1,0 +1,90 @@
+package -> nos diz onde o pacote do programa esta localizado.
+
+O QUE SÃO CLASSES:
+	Uma classe é um elemento do código Java que utilizamos
+para representar objetos do mundo real. Dentro dela é comum declararmos
+atributos e métodos, que representam, respectivamente, as características 
+e comportamentos desse objeto. Os atributos e métodos podem possuir modificadores
+de acesso. Nas classes existem construtores. O construtor padrão é o construtor vazio.
+
+TIPOS PRIMITIVOS:
+	byte, short(16 bits), int, long(deve colocar um L ao final do numero), float, double, char, String,, boolean;
+	Não é necessário declarar um valor inicial a uma variável.
+	O tipo byte suporta a faixa de -128 a 127;
+	Os tipos primitivos possuem valores default.
+
+WRAPPERS: são objetos que representam os primitivos.
+	-Auto-boxing: o compilador sabe converter tipos primitivos em seus 
+respectivos objetos automaticamente.
+	-Unboxing: o compilador converte os objetos de tipos primitivos para 
+seu respectivo tipo primitivo.
+
+->Autoboxing é aplicada pelo compilador do Java nas seguintes condições:
+
+	-Quando um valor primitivo é passado como um parâmetro para um método que espera um objeto da classe Wrapper correspondente.
+	-Quando um valor primitivo é atribuído a uma variável da classe Wrapper correspondente.
+
+->Unboxing é aplicada pelo compilador do Java nas seguintes condições:
+
+	-Quando um objeto é passado como um parâmetro para um método que espera um valor primitivo correspondente.
+	-Quando um objeto é atribuído a uma variável do tipo primitivo correspondente.
+
+TIPOS NÃO PRIMITIVOS:
+	String, Number, Objects, ...;
+	A vantagem de usar os tipos não primitivos é os métodos que já são implementados que paodem ser usados.
+
+->O Java posssui tipagem FORTE E ESTÁTICA:
+	Tipagem estática: os tipos das variáveis são verifivados em tempo de compilação (verificação estática);
+	Tipagem forte: uma vez atribuído um tipo a uma variavel, o mesmo não pode ser mudado.
+	Tipo inferido: (a partir da versao) Apenas usando a palavra 'var', não necessita-se declarar explicitamente
+o tipo da variavel;
+
+MODIFICADORES DE ACESSO:
+	Os modificadores de acesso são padrões de visibilidade de acessos às classes, atributos e métodos. 
+Esses modificadores são palavras-chaves reservadas pelo Java, ou seja, palavras reservadas não podem ser 
+usadas como nome de métodos, classes ou atributos.
+	-Modificador 'public': uma declaração com o modificador public pode ser acessada de qualquer
+lugar e por qualquer entidade que possa visualizar a classe a que ela pertence.
+	-Modificador 'private': Tudo o que é marcado como private em uma classe só pode ser visualizado dentro 
+daquela classe. Os métodos e atributos da classe definidos como privados não podem ser acessados ou usados
+por nenhuma outra classe. Esses atributos e métodos também não podem ser visualizados pelas classes herdadas.
+	-Modificador 'protected': torna o membro acessível para as classes do mesmo pacote ou atraves de herança,
+seus membros herdados não são acessíveis a outras classes fora do pacete em que foram declarados.
+	-Modificador 'default': a classe e/ou seus membros são acessíveis somente por classes do mesmo pacote, 
+na sua declaração não é definido nenhum tipo de modificador, sendo este indicado pelo compilador.
+
+*OUTROS MODIFICADORES:
+	-Modificador 'abstract': não é aplicados à variáveis, apenas em classes e métodos. Uma classe abstrata
+não pode ser instanciada. Se houver alguma declaração de um método como abstract (abstrato), a classe também
+deve ser marcada como abstract. É uma ideia de uma classe. 
+
+	-Modificador 'static': é usado para a criação de uma variável que poderá ser acessada por todas as instâncias 
+de objetos desta classe como uma variável comum, ou seja, a variável criada será a mesma em todas as instâncias, e quando
+seu conteúdo é modificado em uma das instâncias, a modificação ocorre em todas as demais. E nas declarações de métodos 
+ajudam no acesso direto à classe, portanto não é necessário instanciar um objeto para acessar o método.
+
+	-Modificador 'final': quando é aplicado na classe, não permite estende-la;
+nos métodos impede que o mesmo seja sobrescrito (Override) na subclasse; e nos valores 
+das variáveis não pode ser alterado depois que tenha sido atribuído um valor.
+
+->INTERFACES: as interfaces fazem o papel de "contrato" para as implementações;
+
+	-Métodos abstratos:
+		-devem ser implementados por todos;
+		-novos métodos quebram as implementações;
+
+	-Métodos default:
+		-São herdados a todos que implementam;
+		-Novos métodos não quebram as implementações;
+
+	-Herança múltipla: é possivel uma classe implementar mais de uma interface;
+	
+	Métodos default podem ser implementados dentro das interfaces.
+	Interfaces podem ser herdadas.
+
+->Enums:
+	-basicamente é um dicionário de dados imutável;
+	-não é permitido criar novas instâncias;
+	-o construtor é sempre declarado como private;
+	-por convenção, por serem ibjetos constantes e imutáveis
+(static final), os nomes são em MAIUSCULO.
