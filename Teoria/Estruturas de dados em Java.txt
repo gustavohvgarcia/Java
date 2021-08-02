@@ -66,4 +66,10 @@ desde que a classe da lista tenha um toString implementado;
 
 O uso do generics serve para indicar qual a classe a ser usada na fila e 
 qual sera o tipo contido no node.
-	
+
+->LISTAS ENCADEADAS
+	-Composta por nodes;
+	-metodos add(), remove(),get(),isEmpty();
+	-pode-se escolher onde adicionar/remover um no (em qualquer lugar da lista);
+	-o metodo get() pega a referencia de memoria de dado no;
+
