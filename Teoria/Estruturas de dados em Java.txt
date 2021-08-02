@@ -73,3 +73,9 @@ qual sera o tipo contido no node.
 	-pode-se escolher onde adicionar/remover um no (em qualquer lugar da lista);
 	-o metodo get() pega a referencia de memoria de dado no;
 
+
+->LISTAS DUPLAMENTE ENCADEADAS
+	-cada no da lista duplamente encadeada tem duas referencias: o no anterior
+e o no posterior;
+	-a lista possui DUAS referencias de entrada da lista, que apontam para o primeiro
+e o ultimo no da lista;
