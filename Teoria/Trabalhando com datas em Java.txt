@@ -1,0 +1,39 @@
+-> O java.util.Date
+	Antes de qualquer coisa, vamos definir aqui o ponto
+que estamos.
+	A implementação do java.util.Date está na JDK desde sua
+versão 1.0;
+	Ou seja, é de se esperar que algumas coisas não se mostrem
+tão interessantes nos dias atuais, dado a sua idade. 
+	!!!!!1Sempre checar a documentação oficial!!!!!!!
+
+	-O construtor Date():
+	Este construtor vai alocar um objeto da classe Date e o inicia-
+lizará com o milissegundo mais próximo do período da sua execução.
+	
+	-Date(long date): Diferente do construtor anterior, esse construtor
+espera que seja passado os milissegundos com base padrão de tempo (epoch) que usa
+como referencia 1 de janeiro de 1970 00:00:00.
+OBS: o epoch timestamp é um padrão largamento aceito para representar uma data
+com um inteiro 32-bits a partir do Unix Epoch.
+	O método System.currentTimeMillis() retorna o milissegundo mais proximo de sua
+execução com base no sistema operacional. É uma forma padrão de lidar com datas.
+
+-> java.util.Calendar
+	Evolução da classe Date.
+	Calendar é uma classe abstrata que provê métodos para converter data entre
+um instante específico.
+	O calendar possui alguns campos especificos para manipulação, como MONTH, YEAR, HOUR,
+etc.
+
+	-> DATAS NO JAVA 8+
+	Trabalhar com datas nunca foi tao facil com esse novo pacote.
+	Nele destacam-se tres classes:
+	-LocalDate:
+		É uma classe imutável para representar uma data.
+		
+	-LocalTime;
+	-LocalDateTime.
+	
+
+	-

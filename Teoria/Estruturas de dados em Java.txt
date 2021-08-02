@@ -1,0 +1,59 @@
+-Introducao e conceitos basicos
+
+	Os principais componentes que devemos entender eh sobre a memoria.
+A memoria mais utilizada durante a execucao de um programa é a memoria
+RAM.
+	-Memória secundaria: mantem os dados mesmo com a ausencia de energia;
+	-Memória primaria: nao mantem os dados com a ausencia de energia;
+
+->A memoria RAM
+	Cada chip tem condicoes de guardar bilhoes de bits (informacoes);
+	1byte=8bits;
+
+->Atribuição e referencia em Java
+	-As atribuicoes em Java sao por copia de valor sempre;
+	-Com tipo primitivo, copiamos o valor em memoria;
+	-Com objeto copiamos o valor da referencia em memoria, sem duplicar o
+objeto(Obj a = Obj b -> copia a referencia de memoria e manda para a, a modificacao
+em um desses objetos modifica os dois objetos juntos);
+
+-->>> CONCEITOS DE NÓ E ENCADEAMENTO:
+	-Nó é um espaco de memoria que armazena o dado a ser armazenado e uma referencia
+para outro nó. Essa referencia permite fazer o elo (encadeamento) entre as unidades de memoria.
+O ultimo nó é apontado para nulo.
+
+	-GENERICS EM JAVA:
+CONTEXTO:
+	-EVITAR CASTING EXCESSIVO;
+	-EVITAR CÓDIGOS REDUNDANTES;
+	-ENCONTRAR ERROS EM TEMPO DE COMPILAÇÃO;
+	-INTRODUZIDO DESDE O JAVA SE 5.0;
+
+->WILDCARDS
+	-Unknown Wildcards (Unbounded);
+	-Bounded Wildcard (Upper Bounded/Lower Bounded);
+
+	-Unknown Wildcards (Unbounded):
+		-É possível imprimir listas de varios tipos atraves de um mesmo metodo generico,
+desde que a classe da lista tenha um toString implementado;
+		
+	-UpperBounded Wildcard: só é possivel passar listas de classes e subclasses extendidas;
+	-LowerBounded Wildcard: só é possivel pegar da classe para cima (classe pai);
+
+	Para indicar o uso de um tipo generico, deve-se usar <T> ao lado do nome da classe;
+	Os atributos tambem devem ser do tipo generico T, junto aos parametros dos metodos;
+ 	Na declaracao na classe main, indica-se entre as chaves o tipo desejado;
+	
+->PILHAS
+	-FUNCIONAMENTO: LAST IN FIRST OUT (LIFO);
+	-O ultimo elemento colocado na pilha é o primeiro a sair;
+	-Deve haver uma referencia para o topo da pilha;
+	-O primeiro elemento aponta para null.
+
+	-MÉTODOS DA PILHA:
+		-pilha.top = retorna o topo da pilha, sem retira-lo da pilha;
+		-pilha.pop = retira o primeiro elemento da pilha (deve-se atualizar a referencia do topo da pilha);
+		-pilha.push(no) = adiciona um elemento no topo da pilha (deve-se atualizar a referencia de topo da pilha);
+		-boolean isEmpty = checa se a referencia da entrada da pilha esta nula (pilha vazia?);
+
+	IMPLEMENTACAO DA PILHA NO GITHUB.
