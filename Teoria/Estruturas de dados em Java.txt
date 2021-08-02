@@ -57,3 +57,13 @@ desde que a classe da lista tenha um toString implementado;
 		-boolean isEmpty = checa se a referencia da entrada da pilha esta nula (pilha vazia?);
 
 	IMPLEMENTACAO DA PILHA NO GITHUB.
+
+->FILAS
+	-FUNCIONAMENTO: FIRST IN FIRST OUT (FIFO);
+	-O primeiro elemento que entra eh o primeiro a sair;
+	-metodos: enfileirar, desfileirar, isPEmpty;
+	-A referencia do no esta atras do ultimo da fila;
+
+O uso do generics serve para indicar qual a classe a ser usada na fila e 
+qual sera o tipo contido no node.
+	
