@@ -86,3 +86,62 @@ e o ultimo no da lista;
 	-o primeiro no eh a cauda da lista, o primeiro no eh a cabeca;
 	-a referencia de entrada da lista esta localizado no primeiro elemento a ser adicionado;
 	-.add(),.remove(),.isEmpty(),.size();
+
+->ARVORES
+	-Estrutura de dados bidimensional;
+	-Nao Linear;
+	-Constituida de nos que representam um modelo hierarquico
+		-Armazenam os dados com base em relacoes de dependencias;
+	-Listas, Filas e Pilhas sao estruturas lineares;
+	-Utilizacao:
+		-sistemas de arquivos, bancos de dados, interfaces graficas, paginas web;
+
+-CARACTERISTICAS DE UMA ARVORE HIERARQUICA
+	-No: elemento da arvore que pode armazenar dados e referencias a outros nos;
+	-Raiz: no principal da arvore, origem de todas as ramificacoes;
+	-Pai e filho = entre dois nos ligados o descendente direto e filho, e o ancestral
+disposto acima dele eh o pai;
+	-Irmao: nos com o mesmo pai;
+	-Nivel de um no(posicao hierarquica com relacao a raiz);
+	-Altura ou profundidade (grau maximo dos nos);
+	-Folha ou No terminal: no que nao tem filhos;
+	-No interno: nao sao nos folhas
+	-Grau de um No: representa quantos filhos um no pai possui;
+	-SubArvore: formada a partir de um no da arvore principal, sendo iniciado por um ramo.
+Pode ser a esquerda ou a direita.
+
+-TIPOS DE ARVORES:
+	-Arvore binaria, AVL, Ordenada, rubro-negra, 2-3, 2-4, Arvore B, Arvore B+,
+arvore hiperbolica;
+
+	->ARVORES BINARIAS:
+		-Posicao dos nos:
+			-Maiores a direita;
+			-Menores a esquerda;
+		
+	-O no da arvore binaria eh constituido pelo seu conteudo(payload), e referencias para no a esquerda 
+e a direita;
+
+OBS: A INTERFACE COMPARABLE
+	-Ajuda a comparar conteudos genericos;
+	-O objeto deve implementar a interface Comparable(onde se encontra o metodo compareTo);
+	-indica qual o metodo da comparacao que vai ser adotado;
+	
+->Principais metodos da arvore binaria:
+	-Insercao:
+		-maiores para a direita;
+		-menores para a esquerda;
+		-acessar a raiz da arvore, comparar seus valores;
+		-dependendo do valor, jogar para o lado correspondente, e assim sucessivamente,
+ate encontrar um no maior;
+
+	-Exclusao: pega o maior elemento da esquerda e substitui ao no excluido;
+		
+	-Exibicao: utilizar o metodo showTree(exibicao em ordem);
+		
+->ATRAVESSAMENTO EM ARVORES:
+	Tipos de atravessamento:
+		-in-ordem: retorna os valores da arvore em ordem crescente;
+		-pre-ordem: exibe o resultado antes de passar ao proximo elemento;
+		-pos-ordem: visita antes de exibir os valores;
+
