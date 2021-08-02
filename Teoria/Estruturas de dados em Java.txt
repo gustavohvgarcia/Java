@@ -79,3 +79,10 @@ qual sera o tipo contido no node.
 e o no posterior;
 	-a lista possui DUAS referencias de entrada da lista, que apontam para o primeiro
 e o ultimo no da lista;
+
+
+->LISTAS CIRCULARES
+	-o ultimo elemento, ao inves de apontar pra null, aponta para o inicio da lista;
+	-o primeiro no eh a cauda da lista, o primeiro no eh a cabeca;
+	-a referencia de entrada da lista esta localizado no primeiro elemento a ser adicionado;
+	-.add(),.remove(),.isEmpty(),.size();
