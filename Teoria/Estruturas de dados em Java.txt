@@ -145,3 +145,7 @@ ate encontrar um no maior;
 		-pre-ordem: exibe o resultado antes de passar ao proximo elemento;
 		-pos-ordem: visita antes de exibir os valores;
 
+
+------------------------------------------------------------------------------------------------------------------------------
+METODOS EQUALS E HASHCODE:
+	
