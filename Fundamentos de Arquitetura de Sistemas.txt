@@ -1,0 +1,290 @@
+->SERVICOS WEB
+	
+-O que são serviços web(web services): são soluções para apli-
+cações se comunicarem independente da linguagem, softwares e 
+hardwares utilizados;
+	Inicialmente serviços web foram criados para troca de 
+mensagens utlizando a linguagem XML (Extensive Markup Language)
+sobre o protocolo HTTP sendo identificado por URI (Uniform Resource
+Identifier);
+	*Podemos dizer que Serviços Web são API's que se comunicam
+por meio de redes sobre o protocolo HTTP;
+	
+	Vantagens de usar web services:
+		-Linguagem comum;
+		-Integração;
+		-Reutilização de implementação;
+		-Segurança;
+		-Custos;
+
+	Principais tecnologias: SOAP, REST, XML, JSON;
+	
+	-O que é SOAP: Simple Object Access Protocol
+		-É um protocolo baseado em XML para acessar serviços WEB
+principalmente por HTTP;	
+		-Pode-se dizer que SOAP é uma definição de como serviços WEB
+se comunicam;
+		-Foi desenvolvido para facilitar integrações entre aplicações;
+		
+	VANTAGENS NO USO DO SOAP:
+		-Permite integrações entre aplicações, independente de linguagem,
+pois usa como linguagem comum o XML;
+		-É independente de plataforma e software;
+		-Meio de transporte generico, ou seja, pode ser usado por outros protocolos
+alem do HTTP;
+
+
+	->XML: Extensible Markup Language:
+		-é uma linguagem de marcação criada na decada de 90 pela W3C;
+		-Facilita a separação de conteúdo;
+		-Não tem limitação de TAGS;
+		-Linguagem comum para INTEGRAÇÕES ENTRE APLICAÇÕES;
+
+	->ESTRUTURA SOAP:
+		O "SOAP MESSAGE" possui uma estrutura unica que deve sempre ser 
+seguida(desenho no caderno);
+	-SOAP Envelope é o primeiro elemento do documento e é usado para encapsular toda a 
+mensagem SOAP;
+	-SOAP Header é o elemento que possui informações de atributos e metadados da requisição;
+	-SOAP Body é o elemento que contem os elementos da mensagem; 
+
+	-O QUE É UM WSDL(Web Services Description Language):
+		-Usado para descrever Web Services, funciona como um contrato do serviço;
+		-A descrição é feita em um documento XML, onde é descrito o serviço, 
+especificações de acesso, operações e métodos;
+
+	-XSD(XML Schema Definition):
+		-É um schema no formato XML usado para definir a estrutura de dados que 
+será validada no XML;
+		-o XSD funciona como uma documentação de como deve ser montado o SOAP Message
+(XML) que será enviado através de Web Service;
+
+	-O QUE É REST: REPRESENTATIONAL STATE TRASFER;
+		-É um estilo de arquitetura de software que define a implementação de um serviço 
+web;
+		-Podem trabalhar com os formatos XML, JSON ou outros;
+	
+	-VANTAGENS DO REST:
+		-Permite integrações entre aplicações e tambem entre cliente e servidor em paginas web e 
+aplicacoes;
+		-Utiliza dos métodos HTTP para definir a operação que está sendo efetuada;
+		-Arquitetura de facil compreensao;
+		
+-ESTRUTURA DO REST: CLIENTE -> SERVIDOR
+		-O cliente faz a requisição para um servidor;
+		-O servidor retorna um codigo de operacao e uma mensagem (texto, JSON, XML...);
+
+	**Quando uma aplicacao web disponibiliza um conjunto de rotinas e padroes atraves de servicos web,
+podemos chamar esse conjunto de API.
+
+
+->API: APPLICATION PROGRAMMING INTERFACE
+	-São conjuntos de rotinas documentados e disponibilizados por uma aplicação para que outras 
+aplicações possam consumir suas funcionalidades;
+	-Ficou popular com o aumento dos serviços web;
+	-As maiores plataformas de tecnologia disponibilizam APIs para acessos de suas funcionalidades,
+algumas dekas sao: facebook,twitter, telegram,whatsapp,github.
+
+-->PRINCIPAIS METODOS HTTP:
+	Para um serviço web ser considerado REST, ele deve seguir esses principios:
+	GET: Solicita a representação de um recurso(como o objeto está agora?buscar informação);
+	POST: Solicita a criação de um recurso(em uma base de dados por exemplo);
+	DELETE: Solicita a exclusão de um recurso;
+	PUT: Solicita a atualização de um recurso();
+
+->JSON: JavaScript Object Notation
+	-Formatação leve utilizada para troca de mensagens entre sistemas;
+	-Usa-se de uma estrutura de chave e valor e tambem de listas ordenadas;
+	-Um dos formatos mais populares e mais utilizados para troca de mensagens entre sistemas;
+
+->Código de estado(status code): usado pelo servidor para avisar o cliente sobre o estado da operação solicitada;
+	-1xx: informativo;
+	-2xx: sucesso;
+	-3xx: redirecionamento;
+	-4xx: erro do cliente(404 not found): quem faz a requisicao coloca uma informacao errada;
+	-5xx: erro do servidor(erro interno no processamento da requisicao);
+	Forma de padronizar se a requisicao foi aceita ou não(independente do servico web);
+
+	
+-->TIPOS DE ARQUITETURAS DE SISTEMAS:
+	
+
+	-Monolito: (arquitetura mais simples)a mesma aplicacao roda em instancias diferentes, liberando as outras instancias
+quando o volume de acessos for muito alto;
+	-Microsserviços#1: varios servicos que conversam entre si;
+			-conforme aumentam o numero de servicos a complexidade do sistema pode aumentar substancialmente;
+	-Microsserviços#2: nao ha comunicacao direta entre os servicos;
+			-messageBroker(unico ponto de comunicacao entre os servicos);
+			-caso haja alguma quebra em algum dos servicos, os outros servicos não serao afetados;
+			-consegue recuperar trabalho retroativo;
+			-a plataforma inteira esta sujeita ao messageBroker;
+	-Microsserviços#3: presença de um gerenciador de pipeline, que distribui a requisicao para os servicos;
+			-aplicacoes sao separadas, cada servico tem uma responsabilidade especifica;
+			-caso haja erro, ele é retornado ao cliente;
+			-quando o gerenciador de pipeline esteja fora do ar, a aplicacao nao rodará.
+
+->COMPARATIVOS ENTRE MONOLITOS E MICROSSERVIÇOS:
+	-MONOLITO:
+	-PROS: baixa complexidade, monitoramento simplificado;
+	-CONTRAS: Stack unica, compartilhamento de recursos, acoplamento, mais complexo à escalabilidade;
+	
+	-MICROSSERVIÇOS#1:
+		-PROS: stack dinamica, simples escabilidade;
+		-CONTRAS:  acoplamento(dependencias de servicos), monitoramento complexo, provisionamento complexo;
+		
+	-MICROSSERVIÇOS#2:
+		-PROS: stack dinamica, simples escabilidade, desacoplamento;
+		-CONTRAS: Monitoramento mais complexo, provisionamento mais complexo;
+		-caso o messagebroker esteja fora do ar, a aplicacao inteira vai cair.
+	-MICROSSERVIÇOS#3:
+		-PROS: stack dinamica, simples escalabilidade, desacoplamento, menor complexidade;
+		-CONTRAS: provisionamento mais complexos, plataforma inteira depende do gerenciador de pipeline;
+
+->GERENCIAMENTO DE ERRO E VOLUME DE ACESSOS:
+	-PRESENTES EM TODOS OS TIPOS DE ARQUITETURA!;
+	 
+-GERENCIAMENTO DE ERROS:
+	-Onde é mais complexo:
+		-processos assincronos (microsserviços#2):
+			-o erro fica isolado no serviço em que ocorre;
+		-pipeline;
+	
+	-Solução:
+		-Dead letter queue: cria uma fila de erros para tentar reprocessá-la;
+		-Filas de re-tentativas;
+
+------------------------------------------------------------------------------------------------------------------------------
+O que é cloud computing?
+	Cloud computing é uma tecnologia que usa a conectividade e a grande escala da Internet para hospedar os mais variados recursos,
+programas e informações. Dessa forma, a computação em nuvem permite que o usuário os acesse por meio de qualquer computador, 
+tablet ou telefone celular.
+	Tudo isso sem a necessidade de conectar-se a um computador pessoal ou servidor local.
+
+->INTERNET DAS COISAS:
+	-coisas que nao sao pessoas que utilizam a infraestutura mundial de redes para trocar informacoes;
+	-embutir sensores em objetos do dia-a-dia;
+	-coletar dados dos sensores;
+	-usar dados para tomar decisoes;
+
+Conceitos basicos de IoT:
+	-Things: "coisas" que serao utilizadas para coletar dados;
+	-Cloud: onde os dados serao armazenados e processados;
+	-Intelligence: usar os dados de forma inteligente, otimizar processos, etc;
+
+-SmartBuilding: utilizar dados de forma inteligente em edificacoes;
+-SmartHome: sensores em casas que coletam dados para a intelligence processá-los;
+-Wereables: dispositivos vestiveis, coletam informaçoes sobre as pessoas;
+-Agriculture;
+-Cadeia de suprimento (RFID Supply Chain);
+-Computação Ubiqua: a tecnologia se torna parte tao importante de nossas vidas, que não a vemos mais como um processo,
+mas sim como parte indispensaveis de nossas vidas;
+
+->Desafios da internet das coisas:
+	1)Privacidade e segurança;
+	2)Quantidade exponencial de dispositivos conectados a rede;
+	3)Ser capaz de processar e armazenar uma grande quantidade de informacoes;
+	4)Gerar valor a partir dos dados coletados;
+
+->Arquitetura da Internet das Coisas
+	Considerar esses atributos na escolha da coleta de dados:
+		-baixo consumo de energia, rede de dados limitado, resiliencia, segurança,
+customização, baixo custo;
+ 	-sistema operacional realtime: conversa direto com o hardware, tempo de processamento dentro de limites aceitaveis;
+	
+->Protocolo de comunicação:
+	-O protocolo MQTT(Message Queue Telemetry Transport): linguagem comum para comunicacao com a nuvem;
+	-Base na pilha do TCP/IP;
+	-Protocolo de mensagem assincrona(M2M): comunicacao direta maquina para maquina;
+	-Criado pela IBM para conectar sensores de pipelines de petroleo a satelites;
+	-Padrao OASIS suportado pelas linguagens de programação mais populares;
+	
+-> MODELO CLIENTE SERVIDOR:
+	-O cliente faz um request para o servidor, que trata a solicitação;
+	-O servidor gera um conteudo de resposta e manda de volta para o client;
+	
+->Modelo publish/subscribe(MQTT):
+	-separação entre fornecedor e consumidor da mensagem;
+	
+->Flexibilidade dos tópicos
+-publish
+protocolo://broker/user-identifier/sensor/information_type
+mqtt://broker.io/ag613/gps/position
+cada dispositivo recebe esses parametros a serem publicados no broker/docker especifico;
+
+-subscribe: propriedade que um software/dispositivo tem de se conectar ao broker e ouvir o docker;
+	
+->CLOUD: ambiente propicio para armazentamento e processamento de volumes gigantescos de informações;
+	-grande e cada vez maior numero de devices conectados;
+	-TBs ou PBs de informações;
+	-potencial de escala global.
+
+->Data Store: armazenar as informacoes coletadas por tempo definido;
+	-prova de conceito: fazer a solução, independente da linguagem, para ver se a solução
+é viavel;
+--------------------------------------------------------------------------------------------------------------------------------------
+Dados: conjuntos de valores e ocorrencias que descrevem alguma instancia;
+	dados->informações->conhecimento;
+	Dados digitais: os mesmos dados podem ser representados de formas diferentes;
+			-nao tem informacoes a respeito por si só(dados brutos);
+	
+	*Modelo sustentavel: estruturação, durabilidade, velocidade, controle de acesso, isolamento;
+
+->BANCO DE DADOS: conjunto de sistemas e funcionalidades que trabalham na recuperacao, processamento, retorno e segurança dos dados;
+	-Caoacidade de abstracao: extrair os dados do mundo fisico e trazer as informacoes ao usuario;
+	-SGDBs: sistemas gerenciadores de bancos de dados;
+		-Linguagem de definicao: define a estrutura dos dados;
+		-Linguagem de manipulacao: recuperar e alterar informacoes;
+		-Dicionario de dados: como o banco de dados é estruturado.
+
+-Modelo Flat: cada registro é contido em uma linha, os campos sao indicados;
+-Modelo hierarquico: divisao de dados por arvore hierarquica(+rapido);
+-Modelo relacional: conjunto de tabelas que se relacionam entre si, obedecendo algumas regras.
+
+->BANCO DE DADOS RELACIONAIS:
+	Composto por entidades que agrupam informacoes(tabelas);
+	As linhas da tabela contem as informacoes (registros ou tuplas);
+	Coluna: identificam as informacoes;
+	Chaves(primarias(unicidade ao registro), estrangeira(heranca da chave primaria em outra tabela));
+
+-MODELAGEM:
+	-Modelo conceitual(MER): abstracao conceitual, como as entidades se relacionam entre sim atraves das chaves;
+	-Modelo logico (implementacao);
+	-DER(diagrama de entidade de relacionamento);
+	-os relacionamentos podem se dar de forma direta(entidade forte, nao depende de outro dado para existir) 
+ou indireta(entidade fraca, depende de outra entidade para existir);
+	
+	->entidade associativa: possui chaves estrangeiras de outras entidades, a fim de facilitar a recuperacao das informacoes;
+	
+->Normalização: 
+	1a forma normal: quebrar informacoes simultaneas em uma coluna em outras duas colunas;
+	2a forma normal: transformar um registro do tipo string para uma chave estrangeira que nao permita erros;
+	3a forma normal: os valores devem ser totalmente dependentes de chaves primarias;
+
+-Linguagem SGDBR - SQL(structured query language):
+	-DDL: DATA DEFINITION LANGUAGE
+
+DQL: INDEX: subtabelas que servem para ordenar objetos em um BD de acordo com a query desejada;
+
+->TRANSACTIONS:
+	-muitos usuarios devem fazer muitas solicitacoes de forma simultanea;
+	-cada operacao realizada em um BD é tratado como uma transacao independente(comeco, meio e fim);
+	inicio(insert, delete, update)->resolucao(commit, rollback)->fim(Mnovos dados ou dados originais);
+
+->ACID TRANSACTIONS 
+	-Atomicidade: todas as operacoes devem ser executadas com sucesso(commit ou rollback);
+	-Consistencia(Unicidade de chaves, restricoes logicas para as regras de negocio);
+	-Isolamento(varias transacoes podem acessar simultaneamente o mesmo registro(ou parte do registro));
+	-Durabilidade(Depois do commit, mesmo com erros, queda de energia, as alteracoes devem ser aplicadas);
+	
+->SGDBR na pratica
+	Destacados no mercado(comerciais e community):
+		->oracle(grande gama de ferramentas);
+		->microsoft sql server;
+		->IBM DB2;
+	gratuitos:
+		-PostgreSQL;
+		-MySQL;
+		-SQLite;
+	
+	
+			
