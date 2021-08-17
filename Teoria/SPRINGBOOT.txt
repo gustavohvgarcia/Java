@@ -1,0 +1,49 @@
+->O QUE É E QUAIS PROBLEMAS RESOLVEM O SPRING BOOT?
+	PROBLEMAS DO SPRING
+	-Configurações de beans em arquivos XML;
+	-Dispatcher Servlet e view resolver em web.xml;
+	-Setup manual de Banco de dados;
+	-Muito tempo gasto em configuração;
+
+-o que é o Spring Boot?
+	-Criado pela Spring Source em 2012;
+	-facilita o setup de projetos spring;
+	-Sem necessidade de criar arquivos de configuração;
+	-Foco em produtividade;
+	-Maior tempo no desenvolvimento de valor;
+	
+-quais problemas resolve?
+	-Dependencias auto configuraveis pelo Spring Boot;
+	-Execução simplificada: sem deploy em servidor externo;
+	-Configuração: arquivo externo para configuração;
+	-Valor: maior tempo em desenvolvimento;
+
+->Estrutura basica do projeto springboot importado do springboot initialzr:
+	pom.xml: arquivo de configuração e dependencias de frameworks;
+	main->resources: application.properties: arquivo onde é adicionado dependencias  
+de configuração do projeto (banco de dados, portas, etc);
+
+	->Antes do SpringBoot> configuração manual;
+		-multiplos arquivos XML;
+
+	->Auto Configuration:
+	Starters: dependencias simplificadas e auto configuráveis;
+		  identificação e configuração automatica da dependencia;
+	
+->FatJar/UberJar:
+	-artefato do projeto pronto para execução;
+	-container web embutido na geração e execução (TomCat);
+	-Deploy embarcado com outros containers são opcionais;
+	-dependências principais do projeto embarcado;
+	-execução direta através de um unico java-jar;
+	
+->Profiles no Springboot
+	Muitos ambientes de desenvolvimento, teste e produção;
+	-O springboot profiles permite configurações proprias para cada ambiente;
+	ESTUDAR AS ANNOTATIONS DO SPRING
+		@Configuration
+		@ConfigurationProperties
+		@GetMapping->mapeia qual a execucao de acordo com o caminho especificado;
+		@Profile
+		@Bean
+->CONFIGURAÇÕES SPRING ATRAVES DE ARQUIBOS .YML

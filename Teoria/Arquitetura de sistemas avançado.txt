@@ -1,0 +1,136 @@
+----->CONCEITOS DE INTEGRAÇÃO DE SISTEMAS E MENSAGERIA
+O QUE É ARQUITETURA EM MENSAGERIA?
+	aplicacoes externas -> mensagem via http -> requisicao de servicos (podem ser serviços externos)-> os serviços geram mensagens(messageBroker);
+A mensagem pode ser consumida por outros serviços;
+	Serviços nao conectados diretamente podem receber mensagens do messagebroker;
+	PROS E CONTRAS DOS SERVIÇOS DE MENSAGERIA:
+	-PROS: desacoplamento, facil plug&play(facilidade de adicionar/remover features(deve ser conectado ao messagebrojker)), comunicação assincrona(determinadas operações nao exigem que o client espere),
+simples escalabilidade(um serviço nunca sera sobrecarregado), broadcasting(todos os serviços escutam a mesma mensagem), permite event source;
+	-CONTRAS: single point of failure(a arquitetura inteira quebra caso o serviço de mensageria esteja fora do ar), dificil monitoramento; ,
+
+->COMUNICACAO ASSINCRONA ENTRE SERVICOS:
+	WEB APP FAZ REQUISICAO HTTP PARA UM SERVIÇO, ESSE SERVIÇO MANDA UMA MENSAGEM AO MESSAGEBROKER;
+	ESSE SERVICO PODE PRECISAR DE OUTRA APLICACAO QUE CONSUMA ESSA MENSAGEM, GERANDO OUTRA MENSAGEM;
+	ESSA É A COMUNICAÇÃO ASSINCRONA;
+	A COMPLEXIDADE DE MONITORAMENTO DESSES SERVIÇOS AUMENTA COM O NUMERO DE SERVICOS ADICIONADOS.
+
+->GERENCIAMENTO DE ERROS EM UMA ARQUITETURA ASSINCRONA:
+	DEAD LETTER QUEUE (FILAS DE RE-TENTATIVAS): caso a mensagem nao seja processada com sucesso, ela é colocada em uma fila na qual ela tentara ser 
+reprocessada posteriormente;
+	MONITORAMENTO ENTRE SERVIÇOS: é possivel monitorar os servicos para identificar(rastrear) a origem das mensagens de erro;
+	
+	-RASTREAMENTO DE FLUXO: os serviços geram logs durante o processamento do request. Diferentes serviços geram seus logs de forma independente;
+	É necessario agrupar esses logs quando salvos(de maneira indexada e agrupada);
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-> ARQUITETURA DE DADOS NAO ESTRUTURADOS E BUSINESS INTELIGENCE(BI):
+	-O BI é composto basicamente por:
+		-Ferramentas: para interpretação dos dados;
+		-Infraestrutura: servidores para armazenar ferramentas, dados, rede, etc;	
+		-Profissionais(corpo técnico);
+		-DADOS;
+	
+	-De onde vem os dados de BI? Sistemas de SGDB e sistemas de operação;
+	-os dados podem ser complementados com outros dados externos ao mundo da organização;
+	
+->DATA WAREHOUSE: É POSSIVEL PEGAR AS INFORMACOES ATRAVES DO OLTP, ATRAVES DE FERRAMENTAS QUE GERAM CUBOS DE VISOES;
+	OLTP X OLAP: transacao(operacao) x analytics(estrategia)
+	
+	->OLTP: ONLINE TRANSACTION PROCESSING(insercao de novo cliente, de nova venda, atualizacao de produto);
+		-atende alta demanda de usuarios;
+		-dados extremamente volateis(passiveis de alteração);
+	->OLAP: ONLINE ANALYTICAL PROCESSING(consolidacao dos dados  para relatorios e ferramentas estrategicas);
+		-gama mais reduzida de usuarios;
+		-dados nao volateis(nao devem ser alterados, exceto casos muito raros);
+
+->BIG DATA: DADOS NÃO ESTRUTURADOS
+	-Big Data é um termo que descreve o grande volume de dados - tanto estruturados quanto não-estruturados;
+	-Formatos diversos de informacao da qual precisamos tirar algum conhecimento para nossa aplicação;
+
+	-DADOS ESTRUTURADOS: sao armazenados em banco de dados que mantem uma estrutura rigida de informação;
+	-Caso seja necessario fazer alguma alteração na estrutura do dado, deve-se alterar a estrutura do banco para conseguir armazenar a informação;
+	
+	-DADOS SEMI-ESTRUTURADOS(XML, JSON,...): alteração da informação pode ser feita, mantendo-se apenas uma estrutura basica;
+	-dados noSQL(mongoDB), notOnlySQL(banco de dados baseados em JSON, por exemplo);
+
+	-DADOS NÃO ESTRUTURADOS: grande coleção de varios tipos de informaçoes provenientes de redes sociais, dispositivos, etc...;
+
+->DATA LAKE VS BIG DATA
+	-DATA LAKE: grande conjunto de informações ("lago de dados"), é um big data mais reserveado, corporativo, dados bem tratados;
+	
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+->CLOUD COMPUTING:
+	-Gerenciamento de hardware e software;
+	-Provedores de servidor e armazenamento;
+	-Pague o que consumir;
+	-IaaS/PaaS/BaaS
+
+	->IaaS: Infrastructure as a service(a infraestrutura é paga, o dominio aponta para o servidor alugado);
+
+	->PaaS(Platform as a Service): a infraestrutura e a plataforma sao disponibilizadas, o escalamento é feito automaticamente;
+		-microsoft azure, google cloud, amazon webservices;
+
+	->BaaS(Backend as a service, mobile backend as a service): firebase(permissoes, dados)->troca de informacoes usando http e json;
+
+	#DISPONIBILIDADE DE APLICACOES:
+		-IaaS = hardware e internet;
+		-PaaS = auto scale on the go;
+		-BaaS = não há backend service;
+
+	->KUBERNETES: 
+
+	->SERVERLESS:
+		-Sem servidor "rodando"
+
+	->DESENVOLVIMENTO E OPERAÇÃO DE SOFTWARE INTEGRADO:
+		-Integração dos times no desenvolvimento de software;
+		"DevOps é um termo criado para definir o conjunto de práticas que integram e automatizam os processos entre as 
+equipes de desenvolvimento, operações e de apoio (como QA) para a produção rápida e confiavel de software";
+		"O conceito de DevOps baseia-se em criar uma cultura de colaboração entre as equipes que sempre trabalharam separadas";	
+		DevOps é uma mudança de mentalidade, uma cultura, um movimento, uma filosofia.
+	-FRAMEWORK CALMS(Culture, Automation, Lean, Measurement, Sharing);
+	-Culture: todas as ferramentas e automacoes sao inuteis se nao forem acompanhadas pela verdadeira disposicao da area de desenvolvimento
+e operacoes em trabalhar juntos. DevOps nao resolve problemas de ferramentas, e sim problemas humanos;
+	-Automation: elimina o trabalho manula e repetitivo, produz processos repetitiveis e cria sistemas confiaveis. Automatizar gera velocidade na
+entrega e tornam os envolvidos mais produtivos. Normalmente, compilação, teste, implementação e provisionamento automatizados são o ponto de partida
+tipico para equipes que ainda não tem isso implantado;
+	-Lean: precisamos focar nas entregas de valor ao cliente. Precisamos ser objetivos e enxutos. Precisamos conhecer as nossas limitações e os gargalos
+do processo, precisamos ser Lean. A mentalidade DevOps vê oportunidades de melhoria continua e, toda parte. Idenficando limitações, podemos otimizar o fluxo,
+entregando mais velocidade e maior eficiencia;
+	-Measurement: DevOps é ciclico e infinito. Mensurar é obter métricas é ponto de partida para novas melhorias, seja para o processo de desenvolvimento, o 
+software produzido ou as regras de negócio. Além de gerar conhecimento, métricas criam previsibilidade sobre possiveis incidentes que possam vir a surgir. Assim, temos
+insumos suficientes para analisar falhas e gerar melhorias constantes;
+	-Sharing: O compartilhamento de informações, alem de ser saudavel, auxilia na descentralização de conhecimento em pessoas dos times, evitando que os processos
+sejam dependentes. Compartilhar conhecimento ajuda na criação de times genéricos, com conhecimentos básicos em diversos assuntos do negócio e tecnologias. Assim, o time 
+se torna autossustentavel;
+
+	-OS TRES CAMINHOS DO FLUXO DE ENTREGA:
+		-FLOW:	a otimização do fluxo visa eliminar desperdicios, gargalos no processo, tranferencia de responsabilidades e tempo de espera. Esse caminho é trilhado 
+entre a demanda e a entrega em produção. A chave para este caminho é a aplicação de metodologias ágeis e a automatização dos processos do desenvolvimento à release, como a 
+integração continua e/ou entrega continua;
+		-FEEDBACK: Ciclos rapidos de feedbacks visam resolver problemas o quanto antes, testando tudo, alertando em qualquer falha, considerando todas as metricas coletadas
+no ambiente produtivo sobre o valor entregado. O monitoramento é a chave, ajudando a gerar informações constantemente. Com feedbacks rápidos, o negócio consegue falgar rápido,
+e logo retomar o rumo, caso necessário;
+		-LEARNING: o aprendizado continuo visa gerar conhecimento atraves da experimentacao. Hipóteses são melhoers do que uma certeza imediata. Este caminho é fruto
+do processo cientifico e produz segurança psicologica. A chave é o trabalho dinamico, com times realizando experimentos em seu trabalho diario para gerar novas melhorias.
+Elimine a cultura da culpa e aumente a colaboração e o compartilhamento de conhecimento.
+
+->ENTREGANDO SOFTWARE:
+	planejamento, codificação(IDEs, git), construção(docker,net_cli), testes(postman,unite.test), release(disponibilização do software), 
+deploy(a implantação em produção-com o software já lançado(pode ser automatizado)), operate(suporta toda a modificação que foi feita em produção),
+monitor(coletar metricas, pegar feedbacks do software para melhorá-lo);
+	
+	->INTEGRAÇÂO CONTÍNUA (continuous integration (CI)): construção, teste unitario, analise de qualidade e empacotamento da release. Tem como limite a 
+geração do artefato;
+	 	-Continuous Deployment: o deploy é feito de modo automatico;
+		-Continuos Delivery: precisa de um aprovador no meio do caminho para aprovar o deploy para a produção;
+
+	->APPLICATION DEPLOYMENT
+	-principais ferramentas: GitLab CI, Jenkins, Azure Pipeline, Travis CI;
+
+	->PIPELINES: 
+
+->CODE QUALITY ANALYSIS: CONTINUOUS INSPECTION
+	-ferramentas do mercado: sonarqube, code climate, codacy;
+	-confere a complexidade ciclomatica de uma aplicação (ramos na aplicação);		
+	

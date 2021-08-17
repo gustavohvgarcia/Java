@@ -1,0 +1,205 @@
+-> Configurar banco de dados:
+	Um banco de dados (BD) armazena dados de forma estruturada,
+tronando o acesso e atualização dos dados mais rapido, pois aumenta a eficiencia
+computacional (menor gasto de memoria, processamaento e tempo).
+	
+ABAIXO, EM SQL, UM PASSO A PASSO RAPIDO PARA A CRIACAO DE UM BANCO DE DADOS E UMA TABELA
+
+//cria um banco de dados chamado bd
+create database bd;
+
+//o banco de dados criado é selecionado para manipulação
+use bd;
+
+//cria uma tabela com o nome de tabela no banco de dados
+create table tabela(
+	//parametros
+);
+
+//insere um novo registro na tabela 
+insert into tabela values (parametros);
+
+//retorna todos os dados da tabela
+select * from tabela
+
+->JDBC E DRIVERS DE CONEXÃO
+	-JDBC (Java Database Connectivity) é uma API com diversas
+classes e interfaces escritas na linguagem Java que estão presentes
+no pacote java.sql e javax.sql. Elas permitem que programas em Java realizem
+conexões em bancos de dados para realizar consultas. Uma dessas classes principais
+é o driver JDBC que intermedia essa interação.
+	Sem a API JDBC, seria necessario conhecer o protocolo proprietario de cada
+banco de dados para se conectar e realizar consultas. Já com a API JDBC, é utilizada 
+somente UMA interface Java para qualquer banco de dados, deixando o driver implementar
+as especificações de cada banco de dados, enquanto o desenvolvedor se preocupa apenas em 
+selecionar um driver e criar as queries (consultas SQL).
+
+-CLASSES E INTERFACES UTILIZADAS:
+	
+	-A CLASSE DRIVER MANAGER: Responsavel pela comunicação com os drivers disponiveis. É
+utilizada para criar uma 'Connection' com o banco de dados atraves de uma URL, que especifica
+driver, localização do BD e o nome do BD);
+	-INTERFACE CONNECTION: Representa a conexão com o banco de dados. Permite criar 'statements'
+que constroem consultas SQL.
+
+-PASSOS PARA SE CONECTAR A UM BANCO DE DADOS:
+	1) Realizar o download do driver especifico para o BD que sera utilizado. É possivel baixar o driver
+manualmente ou atraves do Gradle ou Maven;
+	2)Criar URL (string de conexao) com os seguintes parametros: driver, endereco do BD, nome do BD;
+	3)Criar uma connection atraves do DriverManager utilizando o método getConnection,
+passando os parametros: string de conexao, usuario e senha.
+
+	Antes de fazer qualquer operação, é necessario instanciar uma conexao com o bd atraves da classe 
+Connection;
+
+->CONSULTAS COM JDBC:
+	Existem 3 interfaces para montar comandos SQL:
+	-Statement: executar SQL comuns: SQL de forma estatica;
+	-Prepared Statement: executar SQL parametrizaveis;
+	-CallableStatement: executar stored procedures;
+
+	Preferir PreparedStatement ao Statement quando for parametrizar a consulta pois:
+		-previne SQL injection;
+		-Melhora legibilidade;
+		=melhora desempenho;
+
+-Existem 3 métodos para executar comandos SQL:
+	-execute: pode executar qualquer tipo de SQL;
+	-executeQuery: usado para executar "SELECT";
+	-executeUpdate: usado para comandos de alteração de banco de dados
+(INSERT, UPDATE, DELETE, CREATE, ALTER);
+
+-ResultSet: objeto que contem os dados de uma determinada consulta no banco de dados
+(normalmente com SELECT).
+	São utilizados os metodos getters e setters para buscar dados do ResultSet, tais como 
+getInt, getFloat e getString;
+	O metodo next() é utilizado para percorrer os registros do ResultSet()(normalmente utilizado
+junto com um while);
+
+->DAO (Data Access Object): classes especializadas para fazer consultas nos bancos;
+Classe responsavel pelo acesso ao banco e a realizacao de selects, updates, etc;
+	->MÉTODO CONSULTA: retorna uma lista com todos os registros do banco de dados.
+	1)acessar o banco de dados;
+	2)criar consulta sql(preparedstatment) e rodar o comando executeQuery();
+	3)percorrer os valores com o metodo resultSet.next();
+	-é necessario instanciar o aluno para retorna-lo a lista;
+	-retornar a lista;
+
+
+
+->ENTENDENDO O JPA
+	Um problema de produtividade começou a ser notado no desenvolvimento de aplicações 
+web Java. Os desenvolvedores perceberam que a maior parte do tempo era gasto com queries
+SQL atraves do JDBC.
+	Um outro problema percebido era a mudança de paradigma. A programação orientada a 
+objetos(ex.: Java) é diferente do esquema entidade relacional(ex: SGDBs tradicionais),
+sendo necessario esquematizar dois modelos para um mesmo sistema.
+	Como solução para esses 2 problemas, foi proposto um modelo de mapeamento chamado
+MAPEAMENTO OBJETO RELACIONAL(ORM) para representar tabelas de um banco de dados relacional atraves
+de classes java.
+	Exemplo de mapeamentos:
+		TABELA <--> COLUNA
+		COLUNA <--> ATRIBUTO
+		REGISTRO <--> OBJETO
+
+	Para padronizar as interfaces das implementações ORM foi criada uma ESPECIFICAÇÃO
+oficial chamada JPA (ou Java Persistence API). Ela descreve como deve ser o comportamento 
+dos frameworks Java ORM que desejarem implementar a sua especificação.
+	Logo, SOMENTE com a ESPECIFICAÇÃO JPA NÃO será possivel executar operações entre a aplicação e 
+o banco de dados;
+	Apesar de ser SOMENTE a especificação, o JPA possui algumas classes, interfaces e anotações 
+que ajudam o desenvolvedor a abstrair o codigo. 
+	Esses artefatos estão presentes no pacote javax.persistence que ajudam a manter o codigo
+independente da implementação utilizada. Lembrando que para persistir dados com JPA, é preciso escolher uma 
+implementação que irá executar todo o trabalho.
+
+	Entre os principais artefatos do JPA, podem ser destacados:
+
+-Anotação @Entity: indica à aplicação que os OBJETOS da classe especificada 
+serao persistidos no banco de dados. Também podem ser utilizadas outras anotações para auxiliar 
+no mapeamento de classe, tais como: @id, @column, @table, @OneToMany e @ManyToOne;
+
+-Interface EntityManager: é utilizada para gerenciar o ciclo de vida das entidades. Os principais métodos utilizados
+são find, persist e remove.
+
+->PASSOS PARA UTILIZAR O JPA EM SUA APLICAÇÃO:
+	1) realizar o download do JPA e do driver JDBC para o BD MySQL atraves do gradle ou maven;
+	2) Criar o arquivo persistence.xml e configurar os seguites parametros: URL da string de conexao
+(driver, endereco do BD e nome do BD), usuario do BD, senha do BD, driver e classes que seram mapeadas para serem 
+usadas pelo JPA.
+	3)Utilizar as annotations nas classes que serao mapeadas para uso do Hibernate.
+	4)Configurar o entityManager.
+
+3)Utilizar as annotations nas classes que serao mapeadas para uso do Hibernate.
+MAPEAMENTO: QUAL CLASSE REPRESENTA QUAL TABELA DO BANCO?
+
+-Anotação @Entity: indica à aplicação que os OBJETOS da classe especificada 
+serao persistidos no banco de dados. Também podem ser utilizadas outras anotações para auxiliar 
+no mapeamento de classe, tais como: @id, @column, @table, @OneToMany e @ManyToOne;
+-Interface EntityManager: é utilizada para gerenciar o ciclo de vida das entidades. Os principais métodos utilizados
+são find, persist e remove.
+	As principais anotações utilizadas junto com a annotation @Entity sao:
+
+@Table: é uma annotation opcional. Por padrao o nome da entidade é usado para  realizar o mapeamento com o nome da tabela
+do banco de dados. Essa annotation sera necessaria caso o nome da entidade seja diferente do nome da tabela no banco de dados;
+
+@Column: é uma annotation opcional. Por padrao, o atributo da entidade é usado para realizar o mapeamento com o nome da coluna do banco de 
+dados. Essa annotation sera necessaria caso os atributos da entidade sejam diferentes das colunas do banco de dados;
+
+@Id: é obrigatorio especificar ao menos uma ID para a entidade.
+
+Os principais metodos do EntityManager para interagir com as entidades sao:
+	find: retorna a entidade que esta persistida no banco de dados atraves da sua CHAVE PRIMARIA;
+	persist: persiste a entidade no banco de dados (é necessario ter iniciado uma transacao);
+	remove: apaga a entidade do banco de dados (é necessario ter iniciado uma transacao);
+
+Para persistir os dados com as entidades mapeadas, é OBRIGATÓRIO iniciar uma transação. Para manipular transacoes, é necessario utilizar
+o seguinte método do entityManager:
+	getTransaction - retorna uma EntityTransaction, sendo obrigatorio o seu uso quando utilizar algum metodo que realize
+alteracoes no banco de dados. Pode utilizar os seguintes métodos:
+	begin: inicia uma transação;
+	commit: finaliza uma transação, persistindo todos os dados que foram modificados desde o inicio da transação;
+	rollback: finaliza uma transação, revertendo todos os dados que foram modificados desde o inicio da transacao;
+
+
+PARTE 2: IMPLEMENTAÇÕES DO JPA (Hibernate e EclipseLink)
+	Para utilizar o JPA é necessario utilizar alguma implementação, pois o JPA é apenas a especificação. Algumas das implementações
+mais conhecidas para o JPA são:
+	-Hibernate: é uma ferramenta ORM open source e é a lider de mercado, sendo a inspiração para a especificação JPA. O Hibernate nasceu
+sem JPA e tinha sua propria implementação ORM(que ainda é possivel usar), porem as versoes atuais ja possuem compatibilidade com a especificação
+JPA e são ais aconselhaveis de usar do que a implementação nativa;
+	-EclipseLink: é um projeto open source de persistencia da Eclipse Foundation. Ele é a implementação de referencia do JPA, alem de permitir que os 
+desenvolvedores interajam com varios serviços de data, incluindo banco de dados, web services,  OXM(OBJECT XML MAPPING), EIS (ENTERPRISE INFORMATION SYSTEMS). Alguns 
+padroes suportados pelo eclipselink sao: JPA, JAXB, JCA, SOD.
+
+	Para utilizar alguma implementação (Hibernate ou EclipseLink) com as especificacoes JPA, basta seguir os seguintes passos:
+	1)realizar o download da API de implementação desejada. É possivel baixar manualmente ou atraves do gradle ou maven;
+	2)Modificar o arquivo persistence.xml configurando a tag <provider> indicando a classe da implementação que sera utilizada;
+	3)é possivel configurar parametros especificos de uma determinada implementação que foi escolhida no passo anterior, tais como 
+dialeto do BD, logs dos SQLs criados e automatização dos comandos DDL (ex: criar as tabelas no banco de dados quando a aplicacao iniciar).
+
+-->LINGUAGENS DE CONSULTA ORIENTADAS A OBJETOS:
+	-O JPQL (Java Persistence Query Language) é uma linguagem de consulta independente orientada a objetos definida pelo JPA. É usado para 
+realizar consultas no banco de dados. É inspirado no sql (inclusive sua sintaxe), porem ele interage com o banco de dados atraves das entidades JPA,
+ao inves de interagir diretamente nas tabelas de banco de dados (como é no SQL).
+	Com o JPQL é possivel utilizar as propriedades de orientacao a objetos nas consultas realizadas no banco de dados, atraves de entidades mapeadas,
+tal como herança.
+
+	Algumas vantagens ao utilizar o JPQL em relação aos métodos básicos de gestao de entidade do EntityManager sao:
+1) operações de busca, atualização e remoção de entidades em MASSA, ao invés de realizar as operações em apenas uma instância 
+por vez atraves de chaves primarias(como nos metodos do entityManager);
+2) realizar consultas mais complexas;
+3) realizar funcoes de agregação.
+
+	Algumas vantagens ao utilizar o JPQL em relacao ao SQL sao:
+1)NÃO é necessario realizar os joins explicitamente entre entidades que estão com annotations de relaxionamento,
+pois os joins são criados automaticamente durante uma consulta;
+2)JPQL utiliza as funcionalidades de carregamento "lazy/eager" nos relacionamentos enntre entidades,
+aumentando a eficiencia das consultas na aplicação;
+3)As consultas podem ser armazenadas em cache para melhorar a performance da aplicação;
+
+	Existe uma alternativa a consultas JPQL q partir do JPA 2.0 chamada JPA Criteria API, que é muito útil para construir
+consultas dinamicas. No JPQL as consultas são só verificadas no momento da execução, não sendo possivel detectar erros de sintaxe na consulta
+durante a compilação. Já o JPA Criteria API consegue detectar esses erros no momento de compilação.
+	Essa funcionalidade se torna possivel porque no JPA Criteria API as consultas são definidas como instancias de objetos Java que representam
+elementos de consulta. Já as consultas JPQL são definidas apenas como "string".
